@@ -1,0 +1,33 @@
+<!-- http://localhost:8080/projects/webconsulte_dev/testes/paciente_form/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+</head>
+<body>
+	<form id="form_user">	
+		Nome Completo: <input name="nome_completo" type="text">
+		<br>
+		Data de Nascimento:<input  name="data_nasc"  type="date" >
+		<br>
+		CPF: <input  name="cpf"  type="text">
+		<br>
+		Telefone: <input  name="telefone" type="text">
+		<br>
+		Endereço: <input   name="endereco" type="text">
+		<br>
+		Nome de Usuário: <input   name="nome_user"  type="text">
+		<br>
+		Senha: <input placeholder="Senha" name="senha"  type="password">
+		<br>
+		<input type="hidden" name="action" value="cadastrar_paciente">
+		<input type="submit" name="submit" value="TESTAR!">
+	</form>
+
+	<div id="resultado"></div>
+
+	<script type="text/javascript" src="../forms.js"></script>
+</body>
+</html>
