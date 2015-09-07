@@ -4,7 +4,7 @@ $(document).ready(function() {
 			e.preventDefault();
 			$.ajax({
 				type: 'post',
-				url: 'http://localhost:8080/projects/modelo/controller/cadastro_paciente.php',
+				url: 'http://localhost:8080/projects/webconsulte_dev/controller/cadastro_paciente.php',
 				data: $('#form_paciente').serialize(),
 				success: function (data) {
 					$('#resultado').html(data);
@@ -19,7 +19,7 @@ $(document).ready(function() {
 			e.preventDefault();
 			$.ajax({
 				type: 'post',
-				url: 'http://localhost:8080/projects/modelo/controller/cadastro_medico.php',
+				url: 'http://localhost:8080/projects/webconsulte_dev/controller/cadastro_medico.php',
 				data: $('#form_medico').serialize(),
 				success: function (data) {
 					$('#resultado').html(data);

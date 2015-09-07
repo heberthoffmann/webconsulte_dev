@@ -25,7 +25,6 @@ $medico->setSenha($senha);
 switch ($action) {
 	case 'cadastrar_medico':
 	$valor = $medico->cadastrar_medico();
-	echo $valor;
 	if($valor == 1){
 		echo"Inserido com sucesso!";
 	}else{
