@@ -1,6 +1,5 @@
 <?php
-Class Medico extends Conn{
-	private $crn;
+Class Secretaria extends Conn{
 	private $nome_completo;
 	private $cpf;
 	private $data_nasc;
@@ -9,9 +8,9 @@ Class Medico extends Conn{
 	private $nome_user;
 	private $senha;
 
-	public function cadastrar_medico(){
+	public function cadastrar_secretaria(){
 		$conn =  parent::connect();
-		$result = $conn->query("INSERT INTO medico (crn,nome_completo,cpf,data_nasc,telefone,endereco,nome_user,senha) VALUES ('".$this->getCrn()."','".$this->getNome_completo()."','".$this->getCpf()."','".$this->getData_nasc()."','".$this->getTelefone()."','".$this->getEndereco()."','".$this->getNome_user()."','".$this->getSenha()."')") or die(mysqli_error($conn)) ;
+		$result = $conn->query("INSERT INTO secretaria (nome_completo, cpf, data_nasc, telefone, endereco, nome_user, senha) VALUES ('".$this->getNome_completo()."','".$this->getCpf()."','".$this->getData_nasc()."','".$this->getTelefone()."','".$this->getEndereco()."','".$this->getNome_user()."','".$this->getSenha()."')") or die(mysqli_error($conn)) ;
 		if ($result){
 			$m = 1;
 		}else{
@@ -21,8 +20,6 @@ Class Medico extends Conn{
 	}
 
 	
-	function setCrn($crn) { $this->crn = $crn; }
-	function getCrn() { return $this->crn; }
 	function setNome_completo($nome_completo) { $this->nome_completo = $nome_completo; }
 	function getNome_completo() { return $this->nome_completo; }
 	function setCpf($cpf) { $this->cpf = $cpf; }
@@ -37,8 +34,6 @@ Class Medico extends Conn{
 	function getNome_user() { return $this->nome_user; }
 	function setSenha($senha) { $this->senha = $senha; }
 	function getSenha() { return $this->senha; }
-
-
 
 }
 ?>

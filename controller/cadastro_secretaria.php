@@ -1,8 +1,7 @@
 <?php
 include"../model/class.connect.php";
-include"../model/class.medico.php";
+include"../model/class.secretaria.php";
 @$action = $_POST['action'];
-@$crn = $_POST['crn'];
 @$nome_completo = $_POST['nome_completo'];
 @$cpf = $_POST['cpf'];
 @$data_nasc = $_POST['data_nasc'];
@@ -11,20 +10,19 @@ include"../model/class.medico.php";
 @$nome_user = $_POST['nome_user'];
 @$senha = $_POST['senha'];
 
-$medico = new Medico();
-$medico->setCrn($crn);
-$medico->setNome_completo($nome_completo);
-$medico->setCpf($cpf);
-$medico->setData_nasc($data_nasc);
-$medico->setTelefone($telefone);
-$medico->setEndereco($endereco);
-$medico->setNome_user($nome_user);
-$medico->setSenha($senha);
+$secretaria = new Secretaria();
+$secretaria->setNome_completo($nome_completo);
+$secretaria->setCpf($cpf);
+$secretaria->setData_nasc($data_nasc);
+$secretaria->setTelefone($telefone);
+$secretaria->setEndereco($endereco);
+$secretaria->setNome_user($nome_user);
+$secretaria->setSenha($senha);
 
 
 switch ($action) {
-	case 'cadastrar_medico':
-	$valor = $medico->cadastrar_medico();
+	case 'cadastrar_secretaria':
+	$valor = $secretaria->cadastrar_secretaria();
 	if($valor == 1){
 		echo"Inserido com sucesso!";
 	}else{
