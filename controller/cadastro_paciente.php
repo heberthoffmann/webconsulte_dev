@@ -24,7 +24,10 @@ switch ($action) {
 	case 'cadastrar_paciente':
 	$valor = $paciente->cadastrar_paciente();
 	if($valor == 1){
-		echo"Inserido com sucesso!";
+		echo "<script> 
+				alert('Cadastro concluido com sucesso!'); 
+				window.location.href = 'http://localhost:8080/projects/webconsulte_dev/index.html'; 
+			  </script>";
 	}else{
 		echo"Falha ao inserir!";
 	}

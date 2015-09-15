@@ -36,6 +36,8 @@ Class Secretaria extends Conn{
 	function getSenha() { return $this->senha; }
 
 }
+
+//header("Location: http://localhost:8080/projects/webconsulte_dev/index.html"); 
 ?>
 
 
