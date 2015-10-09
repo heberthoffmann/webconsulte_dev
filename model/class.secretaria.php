@@ -8,6 +8,8 @@ Class Secretaria extends Conn{
 	private $nome_user;
 	private $senha;
 
+	// Método que cadastra os dados da secretária
+
 	public function cadastrar_secretaria(){
 		$conn =  parent::connect();
 		$result = $conn->query("INSERT INTO secretaria (nome_completo, cpf, data_nasc, telefone, endereco, nome_user, senha) VALUES ('".$this->getNome_completo()."','".$this->getCpf()."','".$this->getData_nasc()."','".$this->getTelefone()."','".$this->getEndereco()."','".$this->getNome_user()."','".$this->getSenha()."')") or die(mysqli_error($conn)) ;
@@ -18,6 +20,14 @@ Class Secretaria extends Conn{
 		}
 		return $m;
 	}
+
+	
+public function pesquisar_secretaria() {
+	$conn =  parent::connect();
+	$result = $conn->query("SELECT * FROM secretaria");
+	$row = mysqli_fetch_all($result,MYSQLI_ASSOC);
+	return $row;
+}
 
 	
 	function setNome_completo($nome_completo) { $this->nome_completo = $nome_completo; }
@@ -38,6 +48,10 @@ Class Secretaria extends Conn{
 }
 
 //header("Location: http://localhost:8080/projects/webconsulte_dev/index.html"); 
+
+// Pesquisar secretária
+
+
+
+
 ?>
-
-

@@ -4,9 +4,27 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Document</title>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script type="text/javascript" src="js/jquery-2.1.3.min.js"></script>
+	<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>-->
 </head>
 <body>
+	
+
+	<script type="text/javascript">
+		$(document).ready(function(){
+			$('#auto').autocomplete(
+			{
+				source: "buscaDados.php",
+				minLength: 2
+			});
+		});
+
+	</script>
+	<form id="auto">
+		Pesquisar:<input type="text" id="auto">	
+	</form>
+	<br>
+	<br>
 	<form id="form_medico">	
 		CRN: <input name="crn" type="text">
 		<br>
@@ -30,6 +48,7 @@
 
 	<div id="resultado"></div>
 
-	<script type="text/javascript" src="../forms.js"></script>
+	<script type="text/javascript" src="../jquery-ui-1.11.4.custom"></script>
+	
 </body>
 </html>
