@@ -30,6 +30,7 @@ function buscar_secretaria(){
 				action:'select'
 			},
 			beforeSend: function(){
+				$("#table_id").hide();
 				$('#msg').append("<center><img src='imagens/loader.gif' width='50px'></center>");
 			},
 			success: function(data, response, req) {
@@ -40,6 +41,7 @@ function buscar_secretaria(){
 				$('#result_secretaria').append(data);
 				 //dataTable();
 
+				 $("#table_id").show();
 				 $('#table_id').DataTable();
 				
 			}

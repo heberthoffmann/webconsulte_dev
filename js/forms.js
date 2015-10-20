@@ -50,8 +50,9 @@ $(function () {
 		});
 	});
 });
-
 });
+
+
 
 // Preecher campos secretária
 
@@ -65,6 +66,7 @@ function visualizar_secretaria(id){
 			id: id
 		},
 		success: function (data) {
+			$("#id").val(data.cod_secretaria);
 			$("#nome_completo").val(data.nome_completo);
 			$("#data_nasc").val(data.data_nasc);
 			$("#cpf").val(data.cpf);
@@ -73,12 +75,27 @@ function visualizar_secretaria(id){
 			$("#nome_user").val(data.nome_user);
 			$("#senha").val(data.senha);
 			console.log(data);
-			
-			
 		}
 	});
-	
-	
+
+
+//Alterar campos secretária
+
+$(function () {
+	$('#alterar_secretaria').on('submit', function (e) {
+		e.preventDefault();
+		$.ajax({
+			type: 'post',
+			url: 'controller/cadastro_secretaria.php',
+			data: $('#form_secretaria').serialize(),
+			success: function (data) {
+				$('#resultado2').html(data);
+				console.log(data);
+			}
+		});
+	});
+});
+
 }
 
 

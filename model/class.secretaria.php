@@ -7,6 +7,7 @@ Class Secretaria extends Conn{
 	private $endereco;
 	private $nome_user;
 	private $senha;
+	private $id;
 
 	// Método que cadastra os dados da secretária
 
@@ -40,7 +41,15 @@ Class Secretaria extends Conn{
 
 	public function alterar_secretaria(){
 		$conn =  parent::connect();
-		$result = $conn->query("UPDATE secretaria SET (nome_completo, cpf, data_nasc, telefone, endereco, nome_user, senha) VALUES ('".$this->getNome_completo()."','".$this->getCpf()."','".$this->getData_nasc()."','".$this->getTelefone()."','".$this->getEndereco()."','".$this->getNome_user()."','".$this->getSenha()."')") or die(mysqli_error($conn)) ;
+
+		// campos update
+		$nome_completo = $this->getNome_completo();
+		$cpf = $this->getCpf();
+		$senha = $this->getSenha();
+		$data_nasc = $this->getData_nasc();
+		$id = $this->getId();
+
+		$result = $conn->query("UPDATE secretaria SET nome_completo = \"$nome_completo\", senha = \"$senha\", cpf = \"$cpf\", data_nasc = \"$data_nasc\" WHERE cod_secretaria = \"$id\"");
 		if ($result){
 			$m = 1;
 		}else{
@@ -64,6 +73,8 @@ Class Secretaria extends Conn{
 	function getNome_user() { return $this->nome_user; }
 	function setSenha($senha) { $this->senha = $senha; }
 	function getSenha() { return $this->senha; }
+	function setId($id) { $this->id = $id; }
+	function getId() { return $this->id; }
 
 }
 

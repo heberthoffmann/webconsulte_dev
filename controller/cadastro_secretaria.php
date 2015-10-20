@@ -10,6 +10,7 @@ include"../model/class.secretaria.php";
 @$endereco = $_POST['endereco'];
 @$nome_user = $_POST['nome_user'];
 @$senha = $_POST['senha'];
+@$id = $_POST['id'];
 
 $secretaria = new Secretaria();
 $secretaria->setNome_completo($nome_completo);
@@ -19,6 +20,7 @@ $secretaria->setTelefone($telefone);
 $secretaria->setEndereco($endereco);
 $secretaria->setNome_user($nome_user);
 $secretaria->setSenha($senha);
+$secretaria->setId($id);
 
 
 switch ($action) {
@@ -46,6 +48,24 @@ switch ($action) {
 		}
 	
 	break;	
+
+	// Alterar secretária
+
+	case 'alterar_secretaria':
+		$valor = $secretaria->alterar_secretaria();
+		if($valor == 1){
+			echo "<script> 
+			alert('Alterado com sucesso!'); 
+			window.location.href = 'http://localhost:8080/projects/webconsulte_dev/cadastro_secretaria.html'; 
+		</script>"; 
+		}else
+		{
+		echo"Falha ao alterar!";
+		}
+	break;
+
+
+	// Visualizar no form
 
 	case 'visualizar_secretaria_id':
 		$id = $_POST['id'];
