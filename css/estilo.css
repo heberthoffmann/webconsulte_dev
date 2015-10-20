@@ -1,4 +1,7 @@
 div#tabela_secretaria{
 	position: relative;
-	top: 200px;
+	margin: auto;
+	top: -700px;
+	left: 450px;
+	width: 400px;
 }

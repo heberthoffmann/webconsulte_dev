@@ -21,13 +21,33 @@ Class Secretaria extends Conn{
 		return $m;
 	}
 
-	
-public function pesquisar_secretaria() {
-	$conn =  parent::connect();
-	$result = $conn->query("SELECT * FROM secretaria");
-	$row = mysqli_fetch_all($result,MYSQLI_ASSOC);
-	return $row;
-}
+// Pesquisar secretária
+
+	public function pesquisar_secretaria($id = null) {
+		$conn =  parent::connect();
+		if ($id == null) {
+			$result = $conn->query("SELECT cod_secretaria, nome_completo, cpf FROM secretaria");
+			$row = mysqli_fetch_all($result,MYSQLI_ASSOC);
+		}
+		else{
+			$result = $conn->query("SELECT * FROM secretaria WHERE cod_secretaria = {$id} limit 1" );
+			$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+		}
+		return $row;
+	}
+
+// Alterar secretária
+
+	public function alterar_secretaria(){
+		$conn =  parent::connect();
+		$result = $conn->query("UPDATE secretaria SET (nome_completo, cpf, data_nasc, telefone, endereco, nome_user, senha) VALUES ('".$this->getNome_completo()."','".$this->getCpf()."','".$this->getData_nasc()."','".$this->getTelefone()."','".$this->getEndereco()."','".$this->getNome_user()."','".$this->getSenha()."')") or die(mysqli_error($conn)) ;
+		if ($result){
+			$m = 1;
+		}else{
+			$m = 0;
+		}
+		return $m;
+	}
 
 	
 	function setNome_completo($nome_completo) { $this->nome_completo = $nome_completo; }
@@ -49,7 +69,7 @@ public function pesquisar_secretaria() {
 
 //header("Location: http://localhost:8080/projects/webconsulte_dev/index.html"); 
 
-// Pesquisar secretária
+
 
 
 

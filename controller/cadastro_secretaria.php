@@ -42,11 +42,19 @@ switch ($action) {
 	//echo json_encode($result);
 	//var_dump($result);
 		for ($i=0; $i <= sizeof($result) ; $i++) { 
-	  		echo "<tr><td>{$result[$i]['cod_secretaria']}</td><td>{$result[$i]['nome_completo']}</td><td>{$result[$i]['cpf']}</td></tr>";		
+	  		echo "<tr><td>{$result[$i]['cod_secretaria']}</td><td>{$result[$i]['nome_completo']}</td><td>{$result[$i]['cpf']}</td><td><button onclick=\"visualizar_secretaria({$result[$i]['cod_secretaria']})\" class='btn btn-default'>Visualizar</button></td></tr>";		
 		}
 	
 	break;	
+
+	case 'visualizar_secretaria_id':
+		$id = $_POST['id'];
+		$result = $secretaria->pesquisar_secretaria($id);
+		echo json_encode($result);
+
+		break;
 }
+
 
 
 ?>
