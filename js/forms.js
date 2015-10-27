@@ -37,12 +37,13 @@ $(function () {
 // Cadastra os dados da secretária
 
 $(function () {
-	$('#form_secretaria').on('submit', function (e) {
+	$('#cadastrar_secretaria').on('click', function (e) {
 		e.preventDefault();
+		data = $('#form_secretaria').serialize();
 		$.ajax({
 			type: 'post',
 			url: 'controller/cadastro_secretaria.php',
-			data: $('#form_secretaria').serialize(),
+			data: data+'&action=cadastrar_secretaria',
 			success: function (data) {
 				$('#resultado').html(data);
 				console.log(data);
@@ -50,7 +51,55 @@ $(function () {
 		});
 	});
 });
+
+// alterar secretaria
+$(function () {
+	$('#alterar_secretaria').on('click', function (e) {
+		e.preventDefault();
+		data = $('#form_secretaria').serialize();
+		$.ajax({
+			type: 'post',
+			url: 'controller/cadastro_secretaria.php',
+			data: data+'&action=alterar_secretaria',
+			success: function (data) {
+				$('#resultado2').html(data);
+				console.log(data);
+			}
+		});
+	});
 });
+
+//excluir secretaria
+$(function () {
+	$('#excluir_secretaria').on('click', function (e) {
+		e.preventDefault();
+		var id = $('#id').val();
+
+		$.ajax({
+			type: 'post',
+			url: 'controller/cadastro_secretaria.php',
+			data:{
+			 action:'excluir_secretaria',
+			 id:id
+			},
+			success: function (data) {
+				//$('#resultado').append(data);
+				alert(data);
+				buscar_secretaria();
+			$("#id").val('');
+			$("#nome_completo").val('');
+			$("#data_nasc").val('');
+			$("#cpf").val('');
+			$("#telefone").val('');
+			$("#endereco").val('');
+			$("#nome_user").val('');
+			$("#senha").val('');
+			}
+		});
+	});
+});
+
+}); //fim ready
 
 
 
@@ -77,25 +126,6 @@ function visualizar_secretaria(id){
 			console.log(data);
 		}
 	});
-
-
-//Alterar campos secretária
-
-$(function () {
-	$('#alterar_secretaria').on('submit', function (e) {
-		e.preventDefault();
-		$.ajax({
-			type: 'post',
-			url: 'controller/cadastro_secretaria.php',
-			data: $('#form_secretaria').serialize(),
-			success: function (data) {
-				$('#resultado2').html(data);
-				console.log(data);
-			}
-		});
-	});
-});
-
 }
 
 

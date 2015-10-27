@@ -58,6 +58,21 @@ Class Secretaria extends Conn{
 		return $m;
 	}
 
+	//Deletar secretaria
+
+	public function excluir_secretaria(){
+		$conn =  parent::connect();
+		$id = $this->getId();
+		$result = $conn->query("DELETE FROM secretaria WHERE cod_secretaria = {$id}");
+			
+		if ($result){
+			$result = 1;
+		}else{
+			$result = 0;
+		}
+		return $result;
+	}
+
 	
 	function setNome_completo($nome_completo) { $this->nome_completo = $nome_completo; }
 	function getNome_completo() { return $this->nome_completo; }

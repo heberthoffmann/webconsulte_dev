@@ -29,7 +29,7 @@ switch ($action) {
 		if($valor == 1){
 			echo "<script> 
 			alert('Cadastro concluido com sucesso!'); 
-			window.location.href = 'http://localhost:8080/projects/webconsulte_dev/index.html'; 
+			window.location.href = 'http://localhost:8080/projects/webconsulte_dev/cadastro_secretaria.html'; 
 		</script>"; 
 		}else
 		{
@@ -68,12 +68,26 @@ switch ($action) {
 	// Visualizar no form
 
 	case 'visualizar_secretaria_id':
-		$id = $_POST['id'];
+		
 		$result = $secretaria->pesquisar_secretaria($id);
 		echo json_encode($result);
+	break;
 
-		break;
+	case 'excluir_secretaria':
+		$result = $secretaria->excluir_secretaria();
+		if($result == '1'){
+			echo 'Exclusao Realizada';
+		}
+		else{
+			echo 'Falha ao Excluir';
+		}
+	break;
+
 }
+
+	//Deletar secretaria
+	
+
 
 
 
