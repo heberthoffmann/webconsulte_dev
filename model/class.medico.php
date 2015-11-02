@@ -8,6 +8,7 @@ Class Medico extends Conn{
 	private $endereco;
 	private $nome_user;
 	private $senha;
+	private $id;
 
 	public function cadastrar_medico(){
 		$conn =  parent::connect();
@@ -18,6 +19,59 @@ Class Medico extends Conn{
 			$m = 0;
 		}
 		return $m;
+	}
+
+
+// Pesquisar Médico
+
+	public function pesquisar_medico($id = null) {
+		$conn =  parent::connect();
+		if ($id == null) {
+			$result = $conn->query("SELECT cod_medico, nome_completo, cpf FROM medico");
+			$row = mysqli_fetch_all($result,MYSQLI_ASSOC);
+		}
+		else{
+			$result = $conn->query("SELECT * FROM medico WHERE cod_medico = {$id} limit 1" );
+			$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
+		}
+		return $row;
+	}
+
+// Alterar Médico
+
+	public function alterar_medico(){
+		$conn =  parent::connect();
+
+		// campos update
+		$crn = $this->getCrn();
+		$nome_completo = $this->getNome_completo();
+		$cpf = $this->getCpf();
+		$senha = $this->getSenha();
+		$data_nasc = $this->getData_nasc();
+		$id = $this->getId();
+
+		$result = $conn->query("UPDATE medico SET crn = \"$crn\", nome_completo = \"$nome_completo\", senha = \"$senha\", cpf = \"$cpf\", data_nasc = \"$data_nasc\" WHERE cod_medico = \"$id\"");
+		if ($result){
+			$m = 1;
+		}else{
+			$m = 0;
+		}
+		return $m;
+	}
+
+	//Deletar Médico
+
+	public function excluir_medico(){
+		$conn =  parent::connect();
+		$id = $this->getId();
+		$result = $conn->query("DELETE FROM medico WHERE cod_medico = {$id}");
+
+		if ($result){
+			$result = 1;
+		}else{
+			$result = 0;
+		}
+		return $result;
 	}
 
 	
@@ -37,6 +91,8 @@ Class Medico extends Conn{
 	function getNome_user() { return $this->nome_user; }
 	function setSenha($senha) { $this->senha = $senha; }
 	function getSenha() { return $this->senha; }
+	function setId($id) { $this->id = $id; }
+	function getId() { return $this->id; }
 
 
 
